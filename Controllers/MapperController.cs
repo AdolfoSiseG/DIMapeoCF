@@ -21,6 +21,8 @@ namespace Integrador.Controllers
         {
             try
             {
+                // Aquí se asume que 'request.detalle' es un string que contiene XML.
+                // Se convierte a un objeto JSON para facilitar su manejo.
                 var detalleXml = request.detalle.ToString();
                 var detalle = JObject.Parse(@"{
                     'Item': 1,
@@ -31,7 +33,10 @@ namespace Integrador.Controllers
                     'ivaitem': 18.32
                 }");
 
+                // Creación de un objeto dinámico para la respuesta.
                 dynamic salida = new ExpandoObject();
+                // Asignación de valores estáticos y dinámicos a la respuesta.
+                // Los valores nulos y los valores por defecto se establecen explícitamente.
                 salida.documentoRelacionado = null;
                 salida.emisor = new
                 {
